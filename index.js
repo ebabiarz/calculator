@@ -3,10 +3,19 @@ let secondNumber;
 let operator;
 
 const displayContent = document.querySelector(".Display-Content");
-const buttons = document.querySelectorAll("button");
 
+numberButton();
 
+function numberButton() {
+    const numberButtons = document.querySelectorAll(".Number");
 
+    numberButtons.forEach((button) => {
+        let num = button.textContent;
+        button.addEventListener("click", () => {
+            displayContent.textContent += num;
+        })
+    })
+}
 
 function operate(operator, firstNumber, secondNumber) {
     if (operator === '+') {
