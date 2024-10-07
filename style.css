@@ -15,6 +15,14 @@
     background-color: rgb(175, 175, 175);
 }
 
+.Operator {
+    background-color: lightblue;
+}
+
+.Equals {
+    background-color: lightgreen;
+}
+
 Button {
     width: 60px;
     height: 75px;
@@ -43,11 +51,16 @@ Button {
     padding: 10px;
 }
 
+#Back-Space {
+    background-color: rgb(179, 182, 186);
+}
+
 #Clear {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding: 10px;
     font-size: 32px;
-    width: 240px;
+    width: 180px;
+    background-color: rgb(250, 187, 162);
 }
