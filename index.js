@@ -9,7 +9,11 @@ operatorButton();
 equalsButton();
 clearButton();
 backSpaceButton();
-
+keyboardNum();
+keyboardOperator();
+keyboardEquals();
+keyboardBackSpace();
+keyboardClear();
 
 function backSpaceButton() {
     const backSpace = document.querySelector("#Back-Space");
@@ -27,6 +31,7 @@ function clearButton() {
         secondNumber = "";
         operator = "";
         displayContent.textContent = "";
+        displayContent.style.color = "black";
     })
 }
 
@@ -39,6 +44,7 @@ function equalsButton() {
             displayContent.textContent = "";
             let result = (operate(operator, firstNumber, secondNumber));
             displayContent.textContent = result;
+            displayContent.style.color = "green";
         }
     })
 }
@@ -50,9 +56,11 @@ function operatorButton() {
 
         button.addEventListener("click", () => {
             
-            if (firstNumber === "" && displayContent.textContent !== "") {
+            if ((firstNumber === "" && displayContent.textContent !== "") 
+                || (firstNumber !== "" && secondNumber !== "")) {
                 firstNumber = parseFloat(displayContent.textContent);
                 displayContent.textContent = "";
+                displayContent.style.color = "black";
 
                 if (button.textContent === "+" || button.textContent === "-") {
                     operator = button.textContent;
@@ -66,6 +74,7 @@ function operatorButton() {
                 result = operate(operator, firstNumber, secondNumber);
                 firstNumber = result;
                 displayContent.textContent = "";
+                displayContent.style.color = "black";
                 if (button.textContent === "+" || button.textContent === "-") {
                     operator = button.textContent;
                 } else if (button.textContent === "×") {
@@ -85,6 +94,7 @@ function numberButton() {
         let num = button.textContent;
 
         button.addEventListener("click", () => {
+            displayContent.style.color = "black";
             if (num === ".") {
                 if (!displayContent.textContent.includes(".")) {
                     displayContent.textContent += num;
@@ -132,4 +142,92 @@ function divide(numOne, numTwo) {
     } else {
         return "Stop That!";
     }
+}
+
+function keyboardClear() {
+    const webPage = document.querySelector("#Web-Page");
+
+    webPage.addEventListener("keydown", (e) => {
+        if (e.key === "C") {
+            firstNumber = "";
+            secondNumber = "";
+            operator = "";
+            displayContent.textContent = "";
+            displayContent.style.color = "black";
+        }
+    })
+}
+
+function keyboardBackSpace() {
+    const webPage = document.querySelector("#Web-Page");
+
+    webPage.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace") {
+            displayContent.textContent = displayContent.textContent.slice(0, -1);
+        }
+    })
+}
+
+function keyboardEquals() {
+    const webPage = document.querySelector("#Web-Page");
+
+    webPage.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            if (firstNumber !== "" && operator !== "" && displayContent.textContent !== "") {
+                secondNumber = parseFloat(displayContent.textContent);
+                displayContent.textContent = "";
+                let result = (operate(operator, firstNumber, secondNumber));
+                displayContent.textContent = result;
+                displayContent.style.color = "green";
+            }
+        }
+    })
+}
+
+function keyboardOperator() {
+    const webPage = document.querySelector("#Web-Page");
+
+    webPage.addEventListener("keydown", (e) => {
+        if (e.key === "+" 
+            || e.key === "-" 
+            || e.key === "*" 
+            || e.key === "/") {
+                if ((firstNumber === "" && displayContent.textContent !== "") 
+                    || (firstNumber !== "" && secondNumber !== "")) {
+                    firstNumber = parseFloat(displayContent.textContent);
+                    displayContent.textContent = "";
+                    displayContent.style.color = "black";
+
+                    operator = e.key;
+                } else if (firstNumber !== "" && displayContent.textContent !== "") {
+                    secondNumber = parseFloat(displayContent.textContent);
+                    result = operate(operator, firstNumber, secondNumber);
+                    firstNumber = result;
+                    displayContent.textContent = "";
+                    displayContent.style.color = "black";
+
+                    operator = e.key;
+                }
+        }
+    })
+}
+
+function keyboardNum() {
+    const webPage = document.querySelector("#Web-Page");
+
+    webPage.addEventListener("keydown", (e) => {
+        if (e.key === "0" || e.key === "1" || e.key === "2" 
+            || e.key === "3" || e.key === "4" || e.key === "5"
+            || e.key === "6" || e.key === "7" || e.key === "8"
+            || e.key === "9" || e.key === ".") {
+                displayContent.style.color = "black";
+                if (e.key === ".") {
+                    if (!displayContent.textContent.includes(".")) {
+                        displayContent.textContent += e.key;
+                    }
+                } else {
+                    displayContent.textContent += e.key;
+                }
+        }
+    })
 }

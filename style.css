@@ -1,7 +1,17 @@
-#Calculator {
+body {
+    background-color: rgb(250, 241, 228);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+#Calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 50px 50px;
+    padding-top: 10px;
 }
 
 .Buttons {
@@ -41,7 +51,7 @@ Button {
     justify-content: flex-end;
     flex: none;
     width: 240px;
-    height: 50px;
+    height: 60px;
 }
 
 .Display-Content {
@@ -63,4 +73,55 @@ Button {
     font-size: 32px;
     width: 180px;
     background-color: rgb(250, 187, 162);
+}
+
+#Page {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.Directions {
+    padding: 80px 50px;
+    padding-top: 40px;
+    min-width: 227.5px;
+}
+
+#Heading {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(177, 216, 243);
+    background-color: rgb(3, 57, 90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    margin: 0px;
+    border: 5px solid rgb(91, 91, 91);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.Content {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(3, 57, 90);
+    background-color: rgb(212, 232, 245);
+    margin: 0px;
+    padding: 10px 20px;
+    border: 5px solid rgb(91, 91, 91);
+    border-top: 0px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.Title {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    font-size: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(3, 57, 90);
+    background-color: rgb(212, 232, 245);
+    border: 5px solid rgb(3, 57, 90);
+    border-radius: 10px;
+    width: 450px;
 }
